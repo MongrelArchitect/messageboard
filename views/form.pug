@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1='New Message'
+  form(method='POST' action='/new')
+    ul
+      li
+        label(for='user')='Name:'
+          input#user(name='user' required type='text')
+      li
+        label(for='message')='Message:'
+          textarea#message(name='message' required)
+      li
+        button(type='submit')='Submit'
