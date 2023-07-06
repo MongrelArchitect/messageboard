@@ -13,6 +13,7 @@ async function postNewMessage(text, user) {
     text,
     user,
   });
+  await message.save();
 }
 
 router.get('/', async (req, res) => {
@@ -31,13 +32,14 @@ router.get('/new', (req, res) => {
   res.render('form');
 });
 
-router.post('/new', (req, res) => {
-  messages.push({
-    added: new Date().toLocaleString(),
-    text: req.body.message,
-    user: req.body.user,
-  });
-  res.redirect('/');
+router.post('/new', async (req, res) => {
+  try {
+    await postNewMessage(req.body.message, req.body.user);
+    res.redirect('/');
+  } catch (err) {
+    console.error(err);
+    res.send(err.message);
+  }
 });
 
 module.exports = router;
