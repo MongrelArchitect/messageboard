@@ -4,10 +4,16 @@ block content
   .container
     h1= title
     ul.messages
-      each message in messages
+      if messages && !error
+        each message in messages
+          li
+            div.text=message.text
+            div.info
+              div.user=message.user
+              div.time=message.added.toLocaleString()
+      else
         li
-          div.text=message.text
+          div.text='Problem reading from database:'
           div.info
-            div.user=message.user
-            div.time=message.added
+            div.user=error
     a(href='/new')='new message'

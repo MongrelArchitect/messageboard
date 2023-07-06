@@ -1,27 +1,27 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const Message = require('../models/message');
+require('dotenv').config();
 
 const router = express.Router();
 
-const messages = [
-  {
-    added: new Date().toLocaleString(),
-    text: 'Hi everyone!',
-    user: 'Guy McDude',
-  },
-  {
-    added: new Date().toLocaleString(),
-    text: 'I like pizza',
-    user: 'PIZZAFAN',
-  },
-  {
-    added: new Date().toLocaleString(),
-    text: 'pizza sucks',
-    user: 'nopizza',
-  },
-];
+async function getMessages() {
+  // mongodb atlas connection with mongoose
+  mongoose.set('strictQuery', false);
+  const mongoDB = process.env.ATLAS;
+  await mongoose.connect(mongoDB);
+  return [...await Message.find({}).sort({ added: 1 })];
+}
 
-router.get('/', (req, res) => {
-  res.render('index', { messages, title: 'Mini Messageboard' });
+router.get('/', async (req, res) => {
+  let messages;
+  let error;
+  try {
+    messages = await getMessages();
+  } catch (err) {
+    error = err;
+  }
+  res.render('index', { messages, error, title: 'Mini Messageboard' });
 });
 
 router.get('/new', (req, res) => {
