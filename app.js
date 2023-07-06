@@ -3,9 +3,19 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
+require('dotenv').config();
 
 const app = express();
+
+// mongodb atlas connection with mongoose
+mongoose.set('strictQuery', false);
+const mongoDB = process.env.ATLAS;
+async function main() {
+  await mongoose.connect(mongoDB);
+}
+main().catch((err) => console.error(err));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

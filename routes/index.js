@@ -1,16 +1,18 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const Message = require('../models/message');
-require('dotenv').config();
 
 const router = express.Router();
 
 async function getMessages() {
-  // mongodb atlas connection with mongoose
-  mongoose.set('strictQuery', false);
-  const mongoDB = process.env.ATLAS;
-  await mongoose.connect(mongoDB);
   return [...await Message.find({}).sort({ added: 1 })];
+}
+
+async function postNewMessage(text, user) {
+  const message = new Message({
+    added: new Date(),
+    text,
+    user,
+  });
 }
 
 router.get('/', async (req, res) => {
@@ -19,6 +21,7 @@ router.get('/', async (req, res) => {
   try {
     messages = await getMessages();
   } catch (err) {
+    // pug template will check for this error / lack of messages
     error = err;
   }
   res.render('index', { messages, error, title: 'Mini Messageboard' });
