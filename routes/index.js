@@ -5,13 +5,13 @@ const router = express.Router();
 const messages = [
   {
     added: new Date().toLocaleString(),
-    text: 'hi everyone',
-    user: 'some guy',
+    text: 'Hi everyone!',
+    user: 'Guy McDude',
   },
   {
     added: new Date().toLocaleString(),
-    text: 'i like pizza',
-    user: 'PIZZAMAN',
+    text: 'I like pizza',
+    user: 'PIZZAFAN',
   },
   {
     added: new Date().toLocaleString(),
