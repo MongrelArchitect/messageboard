@@ -1,11 +1,13 @@
 extends layout
 
 block content
-  h1= title
-  ul
-    each message in messages
-      li
-        div.text=message.text
-        div.user=message.user
-        div.time=message.added
-  a(href='/new')='new message'
+  .container
+    h1= title
+    ul.messages
+      each message in messages
+        li
+          div.text=message.text
+          div.info
+            div.user=message.user
+            div.time=message.added
+    a(href='/new')='new message'

@@ -4,17 +4,17 @@ const router = express.Router();
 
 const messages = [
   {
-    added: new Date(),
+    added: new Date().toLocaleString(),
     text: 'hi everyone',
     user: 'some guy',
   },
   {
-    added: new Date(),
+    added: new Date().toLocaleString(),
     text: 'i like pizza',
     user: 'PIZZAMAN',
   },
   {
-    added: new Date(),
+    added: new Date().toLocaleString(),
     text: 'pizza sucks',
     user: 'nopizza',
   },
@@ -30,7 +30,7 @@ router.get('/new', (req, res) => {
 
 router.post('/new', (req, res) => {
   messages.push({
-    added: new Date(),
+    added: new Date().toLocaleString(),
     text: req.body.message,
     user: req.body.user,
   });
