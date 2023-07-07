@@ -1,6 +1,11 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  .container
+    h1='Error'
+    ul.messages
+      li
+        div.text='Problem posting to database:'
+        div.info
+          div.user=error.message
+    a(href='/')='back to messageboard'

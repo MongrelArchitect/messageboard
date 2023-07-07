@@ -7,10 +7,24 @@ block content
       ul.new-message
         li
           label(for='user')='Name:'
-            input#user(name='user' required type='text')
+            input#user(
+              maxlength='20' 
+              minlength='1' 
+              name='user' 
+              required 
+              type='text'
+            )
         li
           label(for='message')='Message:'
-            textarea#message(rows='4' name='message' required)
+            textarea#message(
+              maxlength='100' 
+              minlength='1' 
+              name='message' 
+              required 
+              rows='4'
+            )
+        li
+          .validation-message='All fields required'
         li.form-buttons
           button.submit(type='submit')='Submit'
           a.return(href='/')='Return'

@@ -37,8 +37,7 @@ router.post('/new', async (req, res) => {
     await postNewMessage(req.body.message, req.body.user);
     res.redirect('/');
   } catch (err) {
-    console.error(err);
-    res.send(err.message);
+    res.render('error', { error: err });
   }
 });
 
