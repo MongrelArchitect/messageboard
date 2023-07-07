@@ -17,6 +17,7 @@
     "pug": "2.0.0-beta11"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.2.16",
     "eslint": "^8.44.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.8.0",

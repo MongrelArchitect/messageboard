@@ -1,0 +1,15 @@
+# fly.toml app configuration file generated for lively-feather-8221 on 2023-07-06T22:36:06-07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "lively-feather-8221"
+primary_region = "lax"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
