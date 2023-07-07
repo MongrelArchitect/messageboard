@@ -111,7 +111,6 @@ form .return {
 
 h1 {
   color: #f5f;
-  font-size: 2.2rem;
 }
 
 input,
@@ -147,7 +146,6 @@ ul.new-message {
   flex-direction: column;
   gap: 8px;
   width: 100%;
-  max-width: 400px;
 }
 
 .container {
@@ -156,7 +154,7 @@ ul.new-message {
   flex-direction: column;
   gap: 16px;
   padding: 8px;
-  width: 800px;
+  width: 40ch;
 }
 
 .crt {
@@ -171,20 +169,20 @@ ul.new-message {
   z-index: 9;
 }
 
-.info {
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 1.8rem;
-  font-style: italic;
-  gap: 16px;
-}
-
 .messages {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
+.time {
+  font-style: italic;
+}
+
 .text {
   color: #eee;
+}
+
+.user {
+  color: #ff5;
 }

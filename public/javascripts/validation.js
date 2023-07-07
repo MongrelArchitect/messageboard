@@ -8,6 +8,13 @@ function validate() {
     const submitButton = document.querySelector('.submit');
     submitButton.disabled = !validForm;
 
+    const setCharcount = (event) => {
+      const charCount = document.querySelector('.charcount');
+      charCount.textContent = event.target.value.length
+        .toString()
+        .padStart(3, '0');
+    };
+
     const setValidationMessage = () => {
       const validationMessage = document.querySelector('.validation-message');
       if (validForm) {
@@ -41,6 +48,7 @@ function validate() {
     const userName = document.querySelector('#user');
 
     messageText.addEventListener('input', validateMessage);
+    messageText.addEventListener('input', setCharcount);
     userName.addEventListener('input', validateUser);
   }
 }

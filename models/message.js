@@ -8,7 +8,7 @@ const MessageSchema = new Schema({
     type: String, required: true, minLength: 1, maxLength: 20,
   },
   text: {
-    type: String, required: true, minLength: 1, maxLength: 100,
+    type: String, required: true, minLength: 1, maxLength: 300,
   },
 });
 

@@ -7,13 +7,11 @@ block content
       if messages && !error
         each message in messages
           li
-            div.text=message.text
-            div.info
-              div.user=message.user
-              div.time=message.added.toLocaleString()
+            .user=message.user
+            .text=message.text
+            .time=`${formatDate(message.added)}`
       else
         li
-          div.text='Problem reading from database:'
-          div.info
-            div.user=error
+          .text='Problem reading from database:'
+          .user=error
     a(href='/new')='new message'

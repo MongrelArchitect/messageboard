@@ -16,8 +16,11 @@ block content
             )
         li
           label(for='message')='Message:'
+            div
+              span.charcount='000'
+              span='/200 characters'
             textarea#message(
-              maxlength='100' 
+              maxlength='200' 
               minlength='1' 
               name='message' 
               required 
